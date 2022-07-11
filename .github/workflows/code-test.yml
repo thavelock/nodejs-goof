@@ -13,3 +13,8 @@ jobs:
         continue-on-error: true
         env:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: sast-report
+          path: results.html
