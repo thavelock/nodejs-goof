@@ -6,6 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: snyk/actions/setup@master
+      - name: Install snyk-to-html
+        run: npm install -g snyk-to-html
       - name: Snyk Test
         run: snyk code test --json | snyk-to-html -o results.html
         continue-on-error: true
