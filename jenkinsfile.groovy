@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('git clone') {
             steps {
-                git url: 'https://somerset-inc/nodejs-goof.git'
+                git url: 'https://github.com/somerset-inc/nodejs-goof.git'
             }
         }
 
