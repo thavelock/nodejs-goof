@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('git clone') {
             steps {
-                git url: 'https://github.com/sebsnyk/juice-shop.git'
+                git url: 'https://somerset-inc/nodejs-goof.git'
             }
         }
 
@@ -85,7 +85,7 @@ pipeline {
                 stage('Snyk Container') {
                     steps {
                         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                            sh './snyk container test sebsnyk/juice-shop --file=Dockerfile --sarif-file-output=results-container.sarif'
+                            sh './snyk container test troysnyk/nodejs-goof --file=Dockerfile --sarif-file-output=results-container.sarif'
                         }
                         recordIssues tool: sarif(name: 'Snyk Container', id: 'snyk-container', pattern: 'results-container.sarif')
                     }
