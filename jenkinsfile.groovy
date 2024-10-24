@@ -15,7 +15,7 @@ pipeline {
     agent any
 
     environment {
-        SNYK_PASSED = 'ok'
+        SNYK_PASSED = 'true'
     }
 
     stages {
@@ -101,6 +101,11 @@ pipeline {
                         }
                         recordIssues tool: sarif(name: 'Snyk IaC', id: 'snyk-iac', pattern: 'results-iac.sarif')
                     }
+                }
+            }
+            post {
+                failure {
+                    env.SNYK_PASSED = 'false'
                 }
             }
         }
