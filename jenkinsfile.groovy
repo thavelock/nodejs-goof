@@ -112,7 +112,7 @@ pipeline {
             }
             steps {
                 echo 'Testing'
-                echo 'Snyk ok: ${env.SNYK_PASSED}'
+                echo "Snyk ok: ${env.SNYK_PASSED}"
             }
         }
     }
