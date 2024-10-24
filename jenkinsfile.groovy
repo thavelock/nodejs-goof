@@ -102,6 +102,10 @@ pipeline {
         }
 
         stage('Post Security Stage') {
+            input {
+                message "Should we continue?"
+                ok "Yes"
+            }
             steps {
                 sh 'echo Testing'
             }
