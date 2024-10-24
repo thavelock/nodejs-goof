@@ -105,7 +105,16 @@ pipeline {
             }
             post {
                 failure {
-                    env.SNYK_PASSED = 'false'
+                    stage('Post Security Stage') {
+                        input {
+                            message "Should we continue?"
+                            ok "Yes"
+                        }
+                        steps {
+                            echo 'Testing'
+                            echo "Snyk ok: ${env.SNYK_PASSED}"
+                        }
+                    }
                 }
             }
         }
