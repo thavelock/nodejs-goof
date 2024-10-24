@@ -124,6 +124,9 @@ pipeline {
                 message "Should we continue?"
                 ok "Yes"
             }
+            when {
+                expression { env.SNYK_PASSED == 'true' }
+            }
             steps {
                 echo 'Testing'
                 echo "Snyk ok: ${env.SNYK_PASSED}"
