@@ -14,7 +14,7 @@ def snykCliBaseName(){
 pipeline {
     agent any
 
-    environmment {
+    environment {
         SNYK_PASSED = 'ok'
     }
 
