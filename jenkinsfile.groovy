@@ -108,6 +108,7 @@ pipeline {
                     echo "Testing post stage"
                 }
                 failure {
+                    echo "Stage failed"
                     script {
                         env.SNYK_PASSED = 'false'
                     }
