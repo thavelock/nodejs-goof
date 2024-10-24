@@ -120,12 +120,13 @@ pipeline {
         }
 
         stage('Post Security Stage') {
-            input {
-                message "Should we continue?"
-                ok "Yes"
-            }
             when {
-                expression { env.SNYK_PASSED == 'true' }
+                expression { env.SNYK_PASSED == 'false' }
+                beforeInput true
+            }
+            input {
+                message "Snyk test failed, should we continue?"
+                ok "Yes"
             }
             steps {
                 echo 'Testing'
