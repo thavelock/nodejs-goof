@@ -14,10 +14,6 @@ def snykCliBaseName(){
 pipeline {
     agent any
 
-    environment {
-        SNYK_PASSED = 'true'
-    }
-
     stages {
         stage('git clone') {
             steps {
@@ -104,16 +100,19 @@ pipeline {
                 }
             }
             post {
-                always {
-                    echo "Testing post stage"
+                success {
+                    echo "Stage success"
+                    script {
+                        echo "setting SNYK_PASSED"
+                        env.SNYK_PASSED = 'true'
+                        echo "Snyk ok: ${env.SNYK_PASSED}"
+                    }
                 }
                 failure {
                     echo "Stage failed"
                     script {
                         echo "setting SNYK_PASSED"
-                        environment {
-                            SNYK_PASSED = 'true'
-                        }
+                        env.SNYK_PASSED = 'false'
                         echo "Snyk ok: ${env.SNYK_PASSED}"
                     }
                 }
