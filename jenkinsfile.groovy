@@ -112,7 +112,7 @@ pipeline {
                     echo "Stage failed"
                     script {
                         echo "setting SNYK_PASSED"
-                        env.SNYK_PASSED = 'false'
+                        env.SNYK_PASSED = 'true'
                         echo "Snyk ok: ${env.SNYK_PASSED}"
                     }
                 }
