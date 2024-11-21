@@ -72,6 +72,8 @@ const SECRET = 'password123';
 
 const SECRET2 = 'password123';
 
+const SECRET3 = 'password123';
+
 // Static
 app.use(st({ path: './public', url: '/public' }));
 
@@ -83,6 +85,9 @@ app.locals.marked = marked;
 if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
+
+var db_password = 'secret_1234567890'
+console.log('db_password: ' + db_password);
 
 var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
 console.log('token: ' + token);
